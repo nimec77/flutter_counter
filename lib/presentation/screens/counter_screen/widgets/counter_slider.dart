@@ -1,5 +1,7 @@
+import 'package:bloc_architecture_app/domain/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterSlider extends StatefulWidget {
   const CounterSlider({
@@ -14,6 +16,7 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
   AnimationController _controller;
   Animation<Offset> _animation;
   double _startAnimationPosX;
+
   // double _startAnimationPosY;
 
   @override
@@ -112,9 +115,9 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
   void _onPanEnd(DragEndDetails details) {
     _controller.stop();
     if (_controller.value <= -0.20) {
-      // setState(() => _value--);
+      context.read<CounterCubit>().decrement();
     } else if (_controller.value >= 0.20) {
-      // setState(() => _value++);
+      context.read<CounterCubit>().increment();
     }
     final SpringDescription _kDefaultSpring = SpringDescription.withDampingRatio(
       mass: 0.9,

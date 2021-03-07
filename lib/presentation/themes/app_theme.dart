@@ -34,17 +34,23 @@ class AppTheme {
   static void setStatusBarAndNavigationBarColors(ThemeMode themeMode) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      statusBarIconBrightness: themeMode == ThemeMode.light ? Brightness.dark : Brightness.light,
-      systemNavigationBarIconBrightness: themeMode == ThemeMode.light ? Brightness.dark : Brightness.light,
-      systemNavigationBarColor: themeMode == ThemeMode.light ? lightBackgroundColor : darkBackgroundColor,
+      statusBarIconBrightness:
+          themeMode == ThemeMode.light ? Brightness.dark : Brightness.light,
+      systemNavigationBarIconBrightness:
+          themeMode == ThemeMode.light ? Brightness.dark : Brightness.light,
+      systemNavigationBarColor: themeMode == ThemeMode.light
+          ? lightBackgroundColor
+          : darkBackgroundColor,
       systemNavigationBarDividerColor: Colors.transparent,
     ));
   }
 
-  static Brightness get currentSystemBrightness => SchedulerBinding.instance.window.platformBrightness;
+  static Brightness get currentSystemBrightness =>
+      SchedulerBinding.instance.window.platformBrightness;
 }
 
 extension ThemeExtras on ThemeData {
-  Color get particlesColor =>
-      brightness == Brightness.light ? AppTheme.lightParticlesColor : AppTheme.darkParticlesColor;
+  Color get particlesColor => brightness == Brightness.light
+      ? AppTheme.lightParticlesColor
+      : AppTheme.darkParticlesColor;
 }

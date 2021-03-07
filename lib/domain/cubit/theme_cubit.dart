@@ -12,7 +12,7 @@ class ThemeCubit extends Cubit<ThemeState> {
 
   void updateAppTheme() {
     final currentBrightness = AppTheme.currentSystemBrightness;
-    _setTheme(currentBrightness == Brightness.light ? ThemeMode.dark : ThemeMode.light);
+    _setTheme(currentBrightness == Brightness.light ? ThemeMode.light : ThemeMode.dark);
   }
 
   void _setTheme(ThemeMode themeMode) {

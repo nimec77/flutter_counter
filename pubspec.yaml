@@ -11,12 +11,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  bloc: ^6.1.1
+#  bloc: ^6.1.1
   cupertino_icons: ^1.0.0
-  flutter_bloc: ^6.1.1
-  hydrated_bloc: ^6.1.0
-  simple_animations: ^2.5.1
+#  flutter_bloc: ^6.1.1
+  flutter_bloc: ^7.0.0-nullsafety.3
+#  hydrated_bloc: ^6.1.0
+  hydrated_bloc: ^7.0.0-nullsafety.2
+#  simple_animations: ^2.5.1
+  simple_animations: ^3.0.0-nullsafety.4
   sizer: ^1.1.8
+  flare_flutter: ^2.0.6
+  path_provider: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +30,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/flares/
