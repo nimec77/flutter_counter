@@ -2,6 +2,7 @@ import 'package:bloc_architecture_app/domain/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sizer/sizer.dart';
 
 class CounterSlider extends StatefulWidget {
   const CounterSlider({
@@ -45,8 +46,8 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
   Widget build(BuildContext context) {
     return FittedBox(
       child: SizedBox(
-        width: 280.0,
-        height: 120.0,
+        width: SizerUtil.deviceType == DeviceType.Tablet ? 40.0.w : 55.0.w,
+        height: 12.0.h,
         child: Material(
           // type: MaterialType.canvas,
           clipBehavior: Clip.antiAlias,
@@ -56,12 +57,12 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
             alignment: Alignment.center,
             children: <Widget>[
               Positioned(
-                left: 10.0,
+                left: SizerUtil.deviceType == DeviceType.Tablet ? 7.0.w : 10.0.w,
                 // bottom: null,
                 child: Icon(Icons.remove, size: 40.0, color: Theme.of(context).iconTheme.color.withOpacity(0.7)),
               ),
               Positioned(
-                right: 10.0,
+                right: SizerUtil.deviceType == DeviceType.Tablet ? 7.0.w : 10.0.w,
                 // top: null,
                 child: Icon(Icons.add, size: 40.0, color: Theme.of(context).iconTheme.color.withOpacity(0.7)),
               ),
@@ -80,7 +81,7 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
                       child: Center(
                         child: Icon(
                           Icons.trip_origin,
-                          size: 40.0,
+                          size: SizerUtil.deviceType == DeviceType.Tablet ? 7.0.w : 10.0.w,
                           color: Theme.of(context).iconTheme.color.withOpacity(0.6),
                         ),
                       ),

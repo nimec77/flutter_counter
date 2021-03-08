@@ -1,5 +1,6 @@
 import 'package:bloc_architecture_app/presentation/screens/counter_screen/widgets/counter_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import 'widgets/animated_circles.dart';
 import 'widgets/counter_value.dart';
@@ -16,7 +17,7 @@ class CounterScreen extends StatelessWidget {
         children: [
           const PlasmaBackground(),
           Positioned(
-            top: 48,
+            top: 10.0.h,
             child: Stack(
               alignment: Alignment.center,
               children: const [
@@ -25,9 +26,9 @@ class CounterScreen extends StatelessWidget {
               ],
             ),
           ),
-          const Positioned(
-            bottom: 48,
-            child: CounterSlider(),
+          Positioned(
+            bottom: 8.0.h,
+            child: const CounterSlider(),
           ),
         ],
       ),

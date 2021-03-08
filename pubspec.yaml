@@ -22,6 +22,7 @@ dependencies:
   sizer: ^1.1.8
   flare_flutter: ^2.0.6
   path_provider: ^2.0.1
+  animate_do: ^2.0.0
 
 dev_dependencies:
   flutter_test:

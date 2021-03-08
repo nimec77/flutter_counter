@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sizer/sizer_util.dart';
 
 import 'domain/debug/app_bloc_observer.dart';
 import 'presentation/constants/strings.dart';
@@ -62,14 +63,21 @@ class _CounterAppState extends State<CounterApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: kAppTitle,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: context.select<ThemeCubit, ThemeMode>((themeCubit) => themeCubit.state.themeMode),
-      debugShowCheckedModeBanner: false,
-      initialRoute: AppRouter.counter,
-      onGenerateRoute: AppRouter.onGenerateRoute,
+    return LayoutBuilder(
+      builder: (context, constraints) => OrientationBuilder(
+        builder: (context, orientation) {
+          SizerUtil().init(constraints, orientation);
+          return MaterialApp(
+            title: kAppTitle,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: context.select<ThemeCubit, ThemeMode>((themeCubit) => themeCubit.state.themeMode),
+            debugShowCheckedModeBanner: false,
+            initialRoute: AppRouter.counter,
+            onGenerateRoute: AppRouter.onGenerateRoute,
+          );
+        },
+      ),
     );
   }
 }
