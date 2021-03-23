@@ -57,12 +57,12 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
             alignment: Alignment.center,
             children: <Widget>[
               Positioned(
-                left: SizerUtil.deviceType == DeviceType.Tablet ? 7.0.w : 10.0.w,
+                left: SizerUtil.deviceType == DeviceType.Tablet ? 3.0.w : 10.0.w,
                 // bottom: null,
                 child: Icon(Icons.remove, size: 40.0, color: Theme.of(context).iconTheme.color.withOpacity(0.7)),
               ),
               Positioned(
-                right: SizerUtil.deviceType == DeviceType.Tablet ? 7.0.w : 10.0.w,
+                right: SizerUtil.deviceType == DeviceType.Tablet ? 3.0.w : 10.0.w,
                 // top: null,
                 child: Icon(Icons.add, size: 40.0, color: Theme.of(context).iconTheme.color.withOpacity(0.7)),
               ),

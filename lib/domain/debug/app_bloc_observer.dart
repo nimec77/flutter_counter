@@ -1,29 +1,8 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppBlocObserver extends BlocObserver {
-  // @override
-  // void onChange(Cubit cubit, Change change) {
-  //   debugPrint(change.toString());
-  //   super.onChange(cubit, change);
-  // }
-
-  // @override
-  // void onClose(Cubit cubit) {
-  //   super.onClose(cubit);
-  // }
-
-  // @override
-  // void onCreate(Cubit cubit) {
-  //   debugPrint(cubit.toString());
-  //   super.onCreate(cubit);
-  // }
-
-  // @override
-  // void onError(Cubit cubit, Object error, StackTrace stackTrace) {
-  //   super.onError(cubit, error, stackTrace);
-  // }
-
   @override
   void onEvent(Bloc bloc, Object event) {
     debugPrint(event.toString());
@@ -37,7 +16,25 @@ class AppBlocObserver extends BlocObserver {
   }
 
   @override
-  void onCreate(Bloc bloc) {
+  void onClose(BlocBase bloc) {
+    debugPrint(bloc.toString());
+    super.onClose(bloc);
+  }
+
+  @override
+  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+    debugPrint(bloc.toString());
+    super.onError(bloc, error, stackTrace);
+  }
+
+  @override
+  void onChange(BlocBase bloc, Change change) {
+    debugPrint('$bloc change: $change');
+    super.onChange(bloc, change);
+  }
+
+  @override
+  void onCreate(BlocBase bloc) {
     debugPrint(bloc.toString());
     super.onCreate(bloc);
   }
