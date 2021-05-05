@@ -46,7 +46,7 @@ class AppTheme {
   }
 
   static Brightness get currentSystemBrightness =>
-      SchedulerBinding.instance.window.platformBrightness;
+      SchedulerBinding.instance!.window.platformBrightness;
 }
 
 extension ThemeExtras on ThemeData {

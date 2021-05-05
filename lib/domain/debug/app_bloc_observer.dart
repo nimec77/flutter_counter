@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
-  void onEvent(Bloc bloc, Object event) {
+  void onEvent(Bloc bloc, Object? event) {
     debugPrint(event.toString());
     super.onEvent(bloc, event);
   }
@@ -28,14 +28,14 @@ class AppBlocObserver extends BlocObserver {
   }
 
   @override
-  void onChange(BlocBase bloc, Change change) {
-    debugPrint('$bloc change: $change');
-    super.onChange(bloc, change);
-  }
-
-  @override
   void onCreate(BlocBase bloc) {
     debugPrint(bloc.toString());
     super.onCreate(bloc);
+  }
+
+  @override
+  void onChange(BlocBase bloc, Change change) {
+    debugPrint(bloc.toString());
+    super.onChange(bloc, change);
   }
 }

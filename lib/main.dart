@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:sizer/sizer_util.dart';
+import 'package:sizer/sizer.dart';
 
 import 'domain/debug/app_bloc_observer.dart';
 import 'presentation/constants/strings.dart';
@@ -35,7 +35,7 @@ class App extends StatelessWidget {
 
 class CounterApp extends StatefulWidget {
   const CounterApp({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -46,7 +46,7 @@ class _CounterAppState extends State<CounterApp> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance!.addObserver(this);
   }
 
   @override
@@ -57,27 +57,24 @@ class _CounterAppState extends State<CounterApp> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance!.removeObserver(this);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) => OrientationBuilder(
-        builder: (context, orientation) {
-          SizerUtil().init(constraints, orientation);
-          return MaterialApp(
-            title: kAppTitle,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: context.select<ThemeCubit, ThemeMode>((themeCubit) => themeCubit.state.themeMode),
-            debugShowCheckedModeBanner: false,
-            initialRoute: AppRouter.counter,
-            onGenerateRoute: AppRouter.onGenerateRoute,
-          );
-        },
-      ),
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return MaterialApp(
+          title: kAppTitle,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: context.select<ThemeCubit, ThemeMode>((themeCubit) => themeCubit.state.themeMode),
+          debugShowCheckedModeBanner: false,
+          initialRoute: AppRouter.counter,
+          onGenerateRoute: AppRouter.onGenerateRoute,
+        );
+      },
     );
   }
 }

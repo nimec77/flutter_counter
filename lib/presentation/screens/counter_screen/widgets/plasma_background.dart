@@ -4,7 +4,7 @@ import 'package:simple_animations/simple_animations.dart';
 
 class PlasmaBackground extends StatelessWidget {
   const PlasmaBackground({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

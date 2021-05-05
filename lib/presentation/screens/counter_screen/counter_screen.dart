@@ -7,7 +7,7 @@ import 'widgets/counter_value.dart';
 import 'widgets/plasma_background.dart';
 
 class CounterScreen extends StatelessWidget {
-  const CounterScreen({Key key}) : super(key: key);
+  const CounterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

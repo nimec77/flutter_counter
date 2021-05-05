@@ -6,7 +6,7 @@ import 'package:sizer/sizer.dart';
 
 class CounterValue extends StatefulWidget {
   const CounterValue({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -14,11 +14,11 @@ class CounterValue extends StatefulWidget {
 }
 
 class _CounterValueState extends State<CounterValue> {
-  AnimationController _animationController;
+  AnimationController? _animationController;
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _animationController!.dispose();
     super.dispose();
   }
 
@@ -31,7 +31,7 @@ class _CounterValueState extends State<CounterValue> {
       controller: (controller) => _animationController = controller,
       child: Text(
         context.select<CounterCubit, String>((counterCubit) => counterCubit.state.counterValue.toString()),
-        style: Theme.of(context).textTheme.headline1.copyWith(
+        style: Theme.of(context).textTheme.headline1!.copyWith(
               fontWeight: FontWeight.bold,
               fontSize: 80.0.sp,
             ),

@@ -6,7 +6,7 @@ import 'package:sizer/sizer.dart';
 
 class CounterSlider extends StatefulWidget {
   const CounterSlider({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -14,9 +14,9 @@ class CounterSlider extends StatefulWidget {
 }
 
 class _Stepper2State extends State<CounterSlider> with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<Offset> _animation;
-  double _startAnimationPosX;
+  AnimationController? _controller;
+  late Animation<Offset> _animation;
+  late double _startAnimationPosX;
 
   // double _startAnimationPosY;
 
@@ -24,10 +24,10 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
   void initState() {
     super.initState();
     _controller = AnimationController(vsync: this, lowerBound: -0.5, upperBound: 0.5);
-    _controller.value = 0.0;
-    _controller.addListener(() {});
+    _controller!.value = 0.0;
+    _controller!.addListener(() {});
 
-    _animation = Tween<Offset>(begin: const Offset(0.0, 0.0), end: const Offset(1.5, 0.0)).animate(_controller);
+    _animation = Tween<Offset>(begin: const Offset(0.0, 0.0), end: const Offset(1.5, 0.0)).animate(_controller!);
   }
 
   @override
@@ -39,14 +39,14 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
   @override
   void didUpdateWidget(CounterSlider oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _animation = Tween<Offset>(begin: const Offset(0.0, 0.0), end: const Offset(1.5, 0.0)).animate(_controller);
+    _animation = Tween<Offset>(begin: const Offset(0.0, 0.0), end: const Offset(1.5, 0.0)).animate(_controller!);
   }
 
   @override
   Widget build(BuildContext context) {
     return FittedBox(
       child: SizedBox(
-        width: SizerUtil.deviceType == DeviceType.Tablet ? 40.0.w : 55.0.w,
+        width: SizerUtil.deviceType == DeviceType.tablet ? 40.0.w : 55.0.w,
         height: 12.0.h,
         child: Material(
           // type: MaterialType.canvas,
@@ -57,14 +57,14 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
             alignment: Alignment.center,
             children: <Widget>[
               Positioned(
-                left: SizerUtil.deviceType == DeviceType.Tablet ? 3.0.w : 10.0.w,
+                left: SizerUtil.deviceType == DeviceType.tablet ? 3.0.w : 10.0.w,
                 // bottom: null,
-                child: Icon(Icons.remove, size: 40.0, color: Theme.of(context).iconTheme.color.withOpacity(0.7)),
+                child: Icon(Icons.remove, size: 40.0, color: Theme.of(context).iconTheme.color!.withOpacity(0.7)),
               ),
               Positioned(
-                right: SizerUtil.deviceType == DeviceType.Tablet ? 3.0.w : 10.0.w,
+                right: SizerUtil.deviceType == DeviceType.tablet ? 3.0.w : 10.0.w,
                 // top: null,
-                child: Icon(Icons.add, size: 40.0, color: Theme.of(context).iconTheme.color.withOpacity(0.7)),
+                child: Icon(Icons.add, size: 40.0, color: Theme.of(context).iconTheme.color!.withOpacity(0.7)),
               ),
               GestureDetector(
                 onHorizontalDragStart: _onPanStart,
@@ -81,8 +81,8 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
                       child: Center(
                         child: Icon(
                           Icons.trip_origin,
-                          size: SizerUtil.deviceType == DeviceType.Tablet ? 7.0.w : 10.0.w,
-                          color: Theme.of(context).iconTheme.color.withOpacity(0.6),
+                          size: SizerUtil.deviceType == DeviceType.tablet ? 7.0.w : 10.0.w,
+                          color: Theme.of(context).iconTheme.color!.withOpacity(0.6),
                         ),
                       ),
                     ),
@@ -105,19 +105,19 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
   }
 
   void _onPanStart(DragStartDetails details) {
-    _controller.stop();
-    _controller.value = offsetFromGlobalPos(details.globalPosition);
+    _controller!.stop();
+    _controller!.value = offsetFromGlobalPos(details.globalPosition);
   }
 
   void _onPanUpdate(DragUpdateDetails details) {
-    _controller.value = offsetFromGlobalPos(details.globalPosition);
+    _controller!.value = offsetFromGlobalPos(details.globalPosition);
   }
 
   void _onPanEnd(DragEndDetails details) {
-    _controller.stop();
-    if (_controller.value <= -0.20) {
+    _controller!.stop();
+    if (_controller!.value <= -0.20) {
       context.read<CounterCubit>().decrement();
-    } else if (_controller.value >= 0.20) {
+    } else if (_controller!.value >= 0.20) {
       context.read<CounterCubit>().increment();
     }
     final SpringDescription _kDefaultSpring = SpringDescription.withDampingRatio(
@@ -125,6 +125,6 @@ class _Stepper2State extends State<CounterSlider> with SingleTickerProviderState
       stiffness: 250.0,
       ratio: 0.6,
     );
-    _controller.animateWith(SpringSimulation(_kDefaultSpring, _startAnimationPosX, 0.0, 0.0));
+    _controller!.animateWith(SpringSimulation(_kDefaultSpring, _startAnimationPosX, 0.0, 0.0));
   }
 }

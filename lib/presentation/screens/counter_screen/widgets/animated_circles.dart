@@ -4,7 +4,7 @@ import 'package:sizer/sizer.dart';
 
 class AnimatedCircles extends StatelessWidget {
   const AnimatedCircles({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
