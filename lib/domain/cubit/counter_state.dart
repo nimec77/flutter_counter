@@ -2,7 +2,7 @@ part of 'counter_cubit.dart';
 
 @immutable
 class CounterState {
-  final int? counterValue;
+  final int counterValue;
 
   const CounterState({required this.counterValue});
 
@@ -13,7 +13,7 @@ class CounterState {
   }
 
   factory CounterState.fromMap(Map<String, dynamic> map) {
-    return CounterState(counterValue: map['counterValue'] as int?);
+    return CounterState(counterValue: map['counterValue'] as int);
   }
 
   @override

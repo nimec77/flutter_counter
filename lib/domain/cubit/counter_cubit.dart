@@ -5,19 +5,17 @@ import 'package:meta/meta.dart';
 part 'counter_state.dart';
 
 class CounterCubit extends Cubit<CounterState> with HydratedMixin {
-  CounterCubit() : super(const CounterState(counterValue: 0));
+  CounterCubit() : super(const CounterState(counterValue: 0)) {
+    hydrate();
+  }
 
-  void increment() => emit(CounterState(counterValue: state.counterValue! + 1));
+  void increment() => emit(CounterState(counterValue: state.counterValue + 1));
 
-  void decrement() => emit(CounterState(counterValue: state.counterValue! - 1));
+  void decrement() => emit(CounterState(counterValue: state.counterValue - 1));
 
   @override
   CounterState fromJson(Map<String, dynamic> json) {
-    if (json != null) {
-      return CounterState.fromMap(json);
-    }
-
-    return const CounterState(counterValue: 0);
+    return CounterState.fromMap(json);
   }
 
   @override
